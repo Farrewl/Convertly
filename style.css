@@ -1,0 +1,93 @@
+:root {
+    --bg-color: #FFFFFF;
+    --card-bg: #F9F9F9;
+    --text-color: #0B192C;
+    --primary: #FF6500;
+    --secondary: #1E3E62;
+    --accent: #0B192C;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0B192C;
+    --card-bg: #1E3E62;
+    --text-color: #FFFFFF;
+    --primary: #FF6500;
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    padding: 2rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.logo span { color: var(--primary); }
+
+.btn-icon {
+    background: none; border: 2px solid var(--secondary);
+    padding: 8px; border-radius: 10px; cursor: pointer; font-size: 1.2rem;
+}
+
+/* --- HERO --- */
+main {
+    display: flex; flex-direction: column;
+    align-items: center; padding: 2rem 10%;
+}
+
+.hero { text-align: center; margin-bottom: 3rem; }
+.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+.text-gradient {
+    background: linear-gradient(to right, var(--primary), #FFB200);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- CONVERTER CARD --- */
+.converter-card {
+    background: var(--card-bg);
+    width: 100%; max-width: 600px;
+    padding: 40px; border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.upload-area {
+    border: 2px dashed #ccc;
+    padding: 40px; border-radius: 16px;
+    cursor: pointer; margin-bottom: 20px;
+}
+
+.upload-area:hover { border-color: var(--primary); background: rgba(255,101,0,0.05); }
+
+.upload-icon { font-size: 3rem; margin-bottom: 15px; }
+
+.btn-primary {
+    background: var(--primary);
+    color: white; border: none;
+    padding: 15px 40px; border-radius: 12px;
+    font-weight: 600; font-size: 1rem;
+    cursor: pointer; width: 100%;
+}
+
+.btn-primary:disabled { background: #ccc; cursor: not-allowed; }
+
+.status-msg { margin-top: 15px; font-size: 0.9rem; font-weight: 500; }
