@@ -3,39 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertly | DOCX to PDF</title>
+    <title>Convertly — All-in-one File Toolkit</title>
+    <meta name="description" content="Convert, compress, and organize your files — right in your browser. No uploads, 100% private.">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="light-mode">
+<body>
+
     <nav>
-        <div class="logo">Convertly<span>.</span></div>
-        <button id="theme-toggle" class="btn-icon">🌓</button>
+        <button class="logo" id="app-logo" type="button" aria-label="Convertly home">Convert<span>ly</span></button>
     </nav>
 
     <main>
-        <div class="hero">
-            <h1>Convert your files <span class="text-gradient">Seamlessly.</span></h1>
-            <p>Simple, Fast, and Secure. All processing happens in your browser.</p>
-        </div>
-
-        <div class="converter-card">
-            <div class="upload-area" id="drop-zone">
-                <input type="file" id="file-input" accept=".docx" hidden>
-                <div class="upload-icon">📄</div>
-                <p id="file-name">Drag & drop your <b>.docx</b> file here or click to browse</p>
+        <!-- ============ DASHBOARD VIEW ============ -->
+        <section id="dashboard-view" class="view">
+            <div class="hero">
+                <span class="hero-tag">No uploads · runs in your browser</span>
+                <h1>Handle your files, <span class="text-gradient">Swiftly.</span></h1>
+                <p>One toolkit for conversions, compression, and the paperwork nobody enjoys — all running quietly in your own browser.</p>
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="tool-search" placeholder="Search tools… e.g. “compress image”" autocomplete="off">
+                </div>
             </div>
 
-            <button id="convert-btn" class="btn-primary" disabled>Convert to PDF</button>
-            
-            <div id="status" class="status-msg"></div>
-        </div>
+            <div id="dashboard-categories"></div>
+        </section>
+
+        <!-- ============ TOOL VIEW ============ -->
+        <section id="tool-view" class="view is-hidden">
+            <button class="back-btn" id="back-btn" type="button">
+                <span class="back-arrow">←</span> All tools
+            </button>
+
+            <div class="tool-header">
+                <div class="tool-icon-badge" id="tool-icon">📄</div>
+                <div>
+                    <h1 id="tool-title">Tool</h1>
+                    <p id="tool-desc">Description</p>
+                </div>
+            </div>
+
+            <div class="converter-card">
+                <div class="upload-area" id="drop-zone">
+                    <input type="file" id="file-input" hidden>
+                    <div class="upload-icon" id="upload-icon">📄</div>
+                    <p id="drop-label">Drag &amp; drop your file here or click to browse</p>
+                </div>
+
+                <div class="file-list" id="file-list"></div>
+                <div class="tool-options" id="tool-options"></div>
+
+                <button id="action-btn" class="btn-primary" disabled>Convert</button>
+
+                <div class="progress-wrap" id="progress-wrap">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div id="status" class="status-msg"></div>
+
+                <div id="result-panel" class="result-panel"></div>
+            </div>
+        </section>
     </main>
 
-    <div id="preview-container" style="display: none;"></div>
+    <div class="toast-container" id="toast-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.21/mammoth.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.16.105/build/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="tools.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
